@@ -1,0 +1,15 @@
+// Placeholder for ethBotTelegram.js with Telegram + profit tracking
+// Placeholder for solBotTelegram.js with Jupiter DEX integration
+const axios = require("axios");
+
+async function checkTokenSafety(tokenAddress) {
+  try {
+    const response = await axios.get(`https://api.honeypot.is/v1/IsHoneypot?address=${tokenAddress}`);
+    return response.data?.honeypotResult?.isHoneypot === false;
+  } catch (e) {
+    console.error("Error during honeypot check:", e.message);
+    return false;
+  }
+}
+
+module.exports = { checkTokenSafety };
